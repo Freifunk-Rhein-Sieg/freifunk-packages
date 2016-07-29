@@ -26,7 +26,7 @@ if [ -f $FAILCOUNTFILE ]; then
                 # debug
                 # echo "maximale Fehler erreicht - rebooting ..."
                 sync
-                # reboot
+                reboot
         fi
         echo $failcount > $FAILCOUNTFILE
         # debug

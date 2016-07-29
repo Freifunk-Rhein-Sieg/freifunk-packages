@@ -3,7 +3,7 @@
 FAILCOUNTFILE=/var/run/mesh0_failcount
 # wie viele Fehlversuche vor dem Reboot (min)
 MAXFAILCOUNT=5
-# letzte 3 Bytes der wifi MAC de gateways
+# letzte 3 Bytes der wifi MAC des gateways
 MAC3GW='b0:49:5e'
 
 # check mesh connections with gateway and reboot if not present:

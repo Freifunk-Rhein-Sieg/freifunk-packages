@@ -1,7 +1,7 @@
 #!/bin/ash
 
 #
-# credits go to kbu.freifunk.net/wiki/ for original cronjob template
+# credits go to http://kbu.freifunk.net/wiki/ for original cronjob template
 #
 
 FAILCOUNTFILE=/var/run/mesh0_failcount

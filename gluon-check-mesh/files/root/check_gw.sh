@@ -1,5 +1,9 @@
 #!/bin/ash
 
+#
+# credits go to kbu.freifunk.net/wiki/ for original cronjob template
+#
+
 FAILCOUNTFILE=/var/run/mesh0_failcount
 # wie viele Fehlversuche vor dem Reboot (min)
 MAXFAILCOUNT=5

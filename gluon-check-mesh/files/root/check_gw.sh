@@ -3,7 +3,12 @@
 #
 # credits go to http://kbu.freifunk.net/wiki/ for original cronjob template
 #
-
+# HowTO:
+# put script into /root/check_gw.sh
+# chmod +x /root/check_gw.sh
+# crontab -e:
+#            * * * * * /root/check_gw.sh > /dev/null 2>&1
+#
 FAILCOUNTFILE=/var/run/mesh0_failcount
 # wie viele Fehlversuche vor dem Reboot (min)
 MAXFAILCOUNT=5

@@ -3,6 +3,12 @@
 #
 # credits go to http://kbu.freifunk.net/wiki/ for original cronjob template
 #
+# HowTO:
+# put script into /root/check_client_mesh.sh
+# chmod +x /root/check_client_mesh.sh
+# crontab -e:
+#            * * * * * /root/check_client_mesh.sh > /dev/null 2>&1
+#
 
 FAILCOUNTFILE=/var/run/clients_mesh0_failcount
 # wie viele Fehlversuche vor dem Reboot (min)

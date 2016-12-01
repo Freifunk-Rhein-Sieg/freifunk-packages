@@ -5,21 +5,32 @@
 #
 # HowTO:
 # put script into /root/check_gw.sh
+# set uci values in lohmar.@checkgw[0]
 # chmod +x /root/check_gw.sh
 # crontab -e:
 #            * * * * * /root/check_gw.sh > /dev/null 2>&1
 #
+
+# ENABLED ?
+DISABLED=`uci get lohmar.@checkgw[0].disabled`
+
+if [ $DISABLED  -eq 0 ]; then
+
+ROLE=`uci get gluon-node-info.@system[0].role`
+
 FAILCOUNTFILE=/var/run/mesh0_failcount
 # wie viele Fehlversuche vor dem Reboot (min)
-MAXFAILCOUNT=5
+MAXFAILCOUNT=`uci get lohmar.@checkgw[0].maxfail`
 # letzte 3 Bytes der wifi MAC des gateways
-MAC3GW='b0:49:5e'
+MAC3GW=`uci get lohmar.@checkgw[0].mac3gw`
 
-# check mesh connections with gateway and reboot if not present:
+  if [ $ROLE == meshanduplink ]; then
 
-count=`batctl gwl | grep $MAC3GW | wc -l`
+  # check mesh connections with gateway and reboot if not present:
 
-if [ -f $FAILCOUNTFILE ]; then
+  count=`batctl gwl | grep $MAC3GW | wc -l`
+
+    if [ -f $FAILCOUNTFILE ]; then
         read failcount < $FAILCOUNTFILE
         if [ $count -gt 0 ]; then
                 if [ $failcount -gt 0 ]; then
@@ -30,8 +41,8 @@ if [ -f $FAILCOUNTFILE ]; then
         failcount=$(($failcount+1))
         if [ $failcount -ge $MAXFAILCOUNT ]; then
                 echo 0 > $FAILCOUNTFILE
-			# do not activate logread
-			#     logread >/etc/mesh0_failcount_lastwords_`date +"%Y-%m-%d_%H%M"`
+                        # do not activate logread
+                        #     logread >/etc/mesh0_failcount_lastwords_`date +"%Y-%m-%d_%H%M"`
                 # debug
                 # echo "maximale Fehler erreicht - rebooting ..."
                 sync
@@ -41,12 +52,14 @@ if [ -f $FAILCOUNTFILE ]; then
         # debug
         # echo "Bisher $failcount Fehler\n"
         fi
-else
+    else
         echo 0 > $FAILCOUNTFILE
         # debug
         # echo "Bisher keine Fehler\n"
 
+    fi
+
+    # echo "$count Mesh-Gateway-Links."
+  fi
+
 fi
-
-# echo "$count Mesh-Gateway-Links."
-

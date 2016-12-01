@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gluon-check-client-mesh
-PKG_VERSION:=1
+PKG_VERSION:=2
 
 PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
@@ -10,7 +10,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/gluon-check-client-mesh
   SECTION:=gluon
   CATEGORY:=Gluon
-  TITLE:=Check Client Mesh
+  TITLE:=Check Client Mesh based on uci logmar.checkmesh config
   DEPENDS:=+gluon-core
 endef
 

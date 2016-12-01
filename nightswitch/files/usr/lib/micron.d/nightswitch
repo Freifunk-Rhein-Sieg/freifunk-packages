@@ -1,0 +1,1 @@
+*/15 * * * *    sh /lib/lohmar/nightswitch/nightswitch.sh;

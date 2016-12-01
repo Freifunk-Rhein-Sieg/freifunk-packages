@@ -5,6 +5,7 @@
 #
 # HowTO:
 # put script into /root/check_client_mesh.sh
+# set uci config values in lohmar.@checkmesh[0]
 # chmod +x /root/check_client_mesh.sh
 # crontab -e:
 #            * * * * * /root/check_client_mesh.sh > /dev/null 2>&1

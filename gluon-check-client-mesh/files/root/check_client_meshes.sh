@@ -10,17 +10,26 @@
 #            * * * * * /root/check_client_mesh.sh > /dev/null 2>&1
 #
 
+
+# ENABLED ?
+DISABLED=`uci get lohmar.@checkmesh[0].disabled`
+
+if [ $DISABLED  -eq 0 ]; then
+
+ROLE=`uci get gluon-node-info.@system[0].role`
 FAILCOUNTFILE=/var/run/clients_mesh0_failcount
 # wie viele Fehlversuche vor dem Reboot (min)
-MAXFAILCOUNT=5
+MAXFAILCOUNT=`uci get lohmar.@checkmesh[0].maxfail`
 # minimale Anzahl der verbundenen wifi meshes
-MINCLIENTS=0
+MINCLIENTS=`uci get lohmar.@checkmesh[0].minclients`
 
-# check mesh connections with gateway and reboot if not present:
+  if [ $ROLE == mesh ]; then
 
-count=`batctl o | grep mesh0 | wc -l`
+  # check mesh connections with gateway and reboot if not present:
 
-if [ -f $FAILCOUNTFILE ]; then
+  count=`batctl o | grep mesh0 | wc -l`
+
+    if [ -f $FAILCOUNTFILE ]; then
         read failcount < $FAILCOUNTFILE
         if [ $count -gt $MINCLIENTS ]; then
                 if [ $failcount -gt 0 ]; then
@@ -31,8 +40,8 @@ if [ -f $FAILCOUNTFILE ]; then
         failcount=$(($failcount+1))
         if [ $failcount -ge $MAXFAILCOUNT ]; then
                 echo 0 > $FAILCOUNTFILE
-			# do not activate logread
-			#     logread >/etc/clints_mesh0_failcount_lastwords_`date +"%Y-%m-%d_%H%M"`
+                        # do not activate logread
+                        #     logread >/etc/clints_mesh0_failcount_lastwords_`date +"%Y-%m-%d_%H%M"`
                 # debug
                 # echo "maximale Fehler erreicht - rebooting ..."
                 sync
@@ -42,12 +51,13 @@ if [ -f $FAILCOUNTFILE ]; then
         # debug
         # echo "Bisher $failcount Fehler\n"
         fi
-else
+    else
         echo 0 > $FAILCOUNTFILE
         # debug
         # echo "Bisher keine Fehler\n"
 
+    fi
+
+    # echo "$count Mesh-Links-Links."
+  fi
 fi
-
-# echo "$count Mesh-Links-Links."
-

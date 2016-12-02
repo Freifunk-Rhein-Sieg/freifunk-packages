@@ -1,12 +1,19 @@
 #!/bin/sh
 
+# Enabled?
+DISABLED=`uci get lohmar.@ssidchanger[0].disabled`
+
+if [ $DISABLED -eq 0 ]; then
+
 # At first some Definitions:
 
 ONLINE_SSID='Freifunk'
 OFFLINE_PREFIX='FF_OFFLINE_' # Use something short to leave space for the nodename
 
-UPPER_LIMIT='55' #Above this limit the online SSID will be used
-LOWER_LIMIT='45' #Below this limit the offline SSID will be used
+#Above this limit the online SSID will be used
+UPPER_LIMIT=`uci get lohmar.@ssidchanger[0].houroff` 
+#Below this limit the offline SSID will be used
+LOWER_LIMIT=`uci get lohmar.@ssidchanger[0].houroff`
 # In-between these two values the SSID will never be changed to preven it from toggeling every Minute.
 
 # Generate an Offline SSID with the first and last Part of the nodename to allow owner to recognise wich node is down
@@ -83,4 +90,6 @@ if [ $HUP_NEEDED == 1 ]; then
         killall -HUP hostapd # Send HUP to all hostapd um die neue SSID zu laden
         HUP_NEEDED=0
         echo "HUP!"
+fi
+
 fi

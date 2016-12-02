@@ -9,4 +9,4 @@ This skript was tested with Gluon 2016.2.1
 
 credits go to https://github.com/Freifunk-Troisdorf/packages
 
-ToDO: change to make use of uci environment
+modified to make use of uci environment

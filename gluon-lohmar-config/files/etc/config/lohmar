@@ -1,11 +1,11 @@
 config nightswitch
-        option houroff '23'
+        option houroff '22'
         option houron '6'
         option disabled '1'
 
 config checkmesh
         option disabled '1'
-        option minclients '0'
+        option minclients '1'
         option maxfail '5'
 
 config checkgw

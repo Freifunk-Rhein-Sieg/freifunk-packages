@@ -1,5 +1,7 @@
 #!/bin/sh
+
 /usr/sbin/ntpd -q -p 2.openwrt.pool.ntp.org             #Check Time before Run
+# nice try, but most often, time is not in sync - check manually ! 
 
 ROLE=`uci get gluon-node-info.@system[0].role`
 

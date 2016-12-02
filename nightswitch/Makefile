@@ -29,12 +29,12 @@ define Build/Compile
 endef
 
 define Package/lohmar-nightswitch/install
-        $(INSTALL_DIR) $(1)/usr/lib/micron.d/
-        $(INSTALL_DATA) files/usr/lib/micron.d/nightswitch $(1)/usr/lib/micron.d/nightswitch
-        $(INSTALL_DIR) $(1)/lib/lohmar/nightswitch/
-        $(INSTALL_BIN) files/lib/lohmar/nightswitch/nightswitch.sh $(1)/lib/lohmar/nightswitch/
-        $(INSTALL_DIR) $(1)/etc/config/
-        $(INSTALL_DATA) files/etc/config/lohmar $(1)/etc/config/lohmar
+  $(INSTALL_DIR) $(1)/usr/lib/micron.d/
+  $(INSTALL_DATA) files/usr/lib/micron.d/nightswitch $(1)/usr/lib/micron.d/nightswitch
+  $(INSTALL_DIR) $(1)/lib/lohmar/nightswitch/
+  $(INSTALL_BIN) files/lib/lohmar/nightswitch/nightswitch.sh $(1)/lib/lohmar/nightswitch/
+  $(INSTALL_DIR) $(1)/etc/config/
+  $(INSTALL_DATA) files/etc/config/lohmar $(1)/etc/config/lohmar
 endef
 
 $(eval $(call BuildPackage,lohmar-nightswitch))

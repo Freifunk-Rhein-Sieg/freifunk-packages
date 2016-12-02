@@ -11,9 +11,9 @@ ONLINE_SSID='Freifunk'
 OFFLINE_PREFIX='FF_OFFLINE_' # Use something short to leave space for the nodename
 
 #Above this limit the online SSID will be used
-UPPER_LIMIT=`uci get lohmar.@ssidchanger[0].houroff` 
+UPPER_LIMIT=`uci get lohmar.@ssidchanger[0].limithigh` 
 #Below this limit the offline SSID will be used
-LOWER_LIMIT=`uci get lohmar.@ssidchanger[0].houroff`
+LOWER_LIMIT=`uci get lohmar.@ssidchanger[0].limitlow`
 # In-between these two values the SSID will never be changed to preven it from toggeling every Minute.
 
 # Generate an Offline SSID with the first and last Part of the nodename to allow owner to recognise wich node is down

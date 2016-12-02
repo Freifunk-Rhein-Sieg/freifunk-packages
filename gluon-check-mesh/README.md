@@ -3,3 +3,4 @@
 #
 # checks for wifi mesh gateway and reboots if mesh0 does not show wanted MAC
 #
+# changed to make use of uci environment 

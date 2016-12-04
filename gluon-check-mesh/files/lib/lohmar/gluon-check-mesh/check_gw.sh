@@ -5,14 +5,12 @@
 #
 # HowTO:
 # set uci node role to meshanduplink
-# set uci values in lohmar.@checkgw[0]
+# set uci values in rsk.@checkgw[0]
 # 
-# crontab should already be in micron.d:
-#            * * * * * /lib/lohmar/gluon-check-mesh/check_gw.sh > /dev/null 2>&1
 #
 
 # ENABLED ?
-DISABLED=`uci get lohmar.@checkgw[0].disabled`
+DISABLED=`uci get rsk.@checkgw[0].disabled`
 
 if [ $DISABLED  -eq 0 ]; then
 
@@ -20,9 +18,9 @@ ROLE=`uci get gluon-node-info.@system[0].role`
 
 FAILCOUNTFILE=/var/run/mesh0_failcount
 # wie viele Fehlversuche vor dem Reboot (min)
-MAXFAILCOUNT=`uci get lohmar.@checkgw[0].maxfail`
+MAXFAILCOUNT=`uci get rsk.@checkgw[0].maxfail`
 # letzte 3 Bytes der wifi MAC des gateways
-MAC3GW=`uci get lohmar.@checkgw[0].mac3gw`
+MAC3GW=`uci get rsk.@checkgw[0].mac3gw`
 
   if [ $ROLE == meshanduplink ]; then
 

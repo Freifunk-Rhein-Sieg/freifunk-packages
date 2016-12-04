@@ -5,9 +5,9 @@
 
 ROLE=`uci get gluon-node-info.@system[0].role`
 
-OFF_HOUR=`uci get lohmar.@nightswitch[0].houroff`
-ON_HOUR=`uci get lohmar.@nightswitch[0].houron`
-DISABLED=`uci get lohmar.@nightswitch[0].disabled`
+OFF_HOUR=`uci get rsk.@nightswitch[0].houroff`
+ON_HOUR=`uci get rsk.@nightswitch[0].houron`
+DISABLED=`uci get rsk.@nightswitch[0].disabled`
 WIFI24_STATUS=`uci get wireless.client_radio0.disabled`
 
 HOUR=`date +"%H"`

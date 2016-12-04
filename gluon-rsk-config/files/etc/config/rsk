@@ -1,0 +1,19 @@
+config nightswitch
+        option houroff '22'
+        option houron '6'
+        option disabled '1'
+
+config checkmesh
+        option disabled '1'
+        option minclients '1'
+        option maxfail '5'
+
+config checkgw
+        option disabled '1'
+        option mac3gw 'b0:49:5e'
+        option maxfail '5'
+
+config ssidchanger
+        option disabled '0'
+        option limitlow '45'
+        option limithigh '55'

@@ -10,7 +10,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/gluon-check-client-mesh
   SECTION:=gluon
   CATEGORY:=Gluon
-  TITLE:=Check Client Mesh based on uci logmar.checkmesh config
+  TITLE:=Check Client Mesh based on uci rsk.checkmesh config
   DEPENDS:=+gluon-core
 endef
 

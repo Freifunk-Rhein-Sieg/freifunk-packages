@@ -1,1 +1,1 @@
-*/15 * * * *    sh /lib/lohmar/nightswitch/nightswitch.sh;
+*/15 * * * *    sh /lib/rsk/nightswitch/nightswitch.sh;

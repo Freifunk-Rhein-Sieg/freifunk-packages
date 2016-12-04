@@ -5,24 +5,22 @@
 #
 # HowTO:
 # set uci node role to mesh
-# set uci config values in lohmar.@checkmesh[0]
+# set uci config values in rsk.@checkmesh[0]
 # 
-# crontab -e:
-#            * * * * * sh /lib/lohmar/gluon-check-client-mesh/check_client_mesh.sh > /dev/null 2>&1
 #
 
 
 # ENABLED ?
-DISABLED=`uci get lohmar.@checkmesh[0].disabled`
+DISABLED=`uci get rsk.@checkmesh[0].disabled`
 
 if [ $DISABLED  -eq 0 ]; then
 
 ROLE=`uci get gluon-node-info.@system[0].role`
 FAILCOUNTFILE=/var/run/clients_mesh0_failcount
 # wie viele Fehlversuche vor dem Reboot (min)
-MAXFAILCOUNT=`uci get lohmar.@checkmesh[0].maxfail`
+MAXFAILCOUNT=`uci get rsk.@checkmesh[0].maxfail`
 # minimale Anzahl der verbundenen wifi meshes
-MINCLIENTS=`uci get lohmar.@checkmesh[0].minclients`
+MINCLIENTS=`uci get rsk.@checkmesh[0].minclients`
 
   if [ $ROLE == mesh ]; then
 

@@ -1,1 +1,1 @@
-fill up luci upgrade scripts in gluon-rsk-config to add missing records
+fill up luci upgrade scripts in gluon-rsk-config to add missing records -> added lua upgrade script that write rsk if not exist

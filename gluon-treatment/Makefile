@@ -15,7 +15,7 @@ define Package/gluon-treatment
 endef
 
 define Build/Prepare
-        mkdir -p $(PKG_BUILD_DIR)
+  mkdir -p $(PKG_BUILD_DIR)
 endef
 
 define Build/Configure
@@ -25,8 +25,8 @@ define Build/Compile
 endef
 
 define Package/gluon-treatment/install
-        chmod +x ./files/lib/gluon/treatment/macs/*
-        $(CP) ./files/* $(1)/
+  chmod +x ./files/lib/gluon/treatment/macs/*
+  $(CP) ./files/* $(1)/
 endef
 
 $(eval $(call BuildPackage,gluon-treatment))

@@ -17,3 +17,12 @@ config ssidchanger
         option disabled '0'
         option limitlow '45'
         option limithigh '55'
+
+config speedlimit
+        option disabled '1'
+        option limit_ingres '1850'
+        option limit_egress '85'
+        option normal_ingres '7000'
+        option normal_egress '500'
+        option hour_limit '22'
+        option hour_normal '6'

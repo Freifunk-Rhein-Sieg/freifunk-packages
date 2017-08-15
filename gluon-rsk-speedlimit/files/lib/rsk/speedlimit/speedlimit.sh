@@ -4,15 +4,26 @@
 # nice try, but most often, time is not in sync - check manually ! 
 
 ROLE=`uci get gluon-node-info.@system[0].role`
-
-LIMIT_HOUR=`uci get rsk.@speedlimit[0].hour_limit`
-STANDADR_HOUR=`uci get rsk.@speedlimit[0].hour_normal`
+#
+# times to switch mesh vpn bandwith
+#
+HOUR_LIMIT=`uci get rsk.@speedlimit[0].hour_limit`
+HOUR_STANDARD=`uci get rsk.@speedlimit[0].hour_normal`
+#
+# mesh vpn bandwith ratings
+#
+# default
+INGRESS_DEFAULT=`uci get rsk.@speedlimit[0].default_ingress`
+EGRESS_DEFAULT=`uci get rsk.@speedlimit[0].default_egress`
+INGRESS_LIMIT=`uci get rsk.@speedlimit[0].default_ingress`
+# limited
+EGRESS_LIMIT=`uci get rsk.@speedlimit[0].default_egress`
 DISABLED=`uci get rsk.@speedlimit[0].disabled`
 
 HOUR=`date +"%H"`
 if [ $DISABLED -eq 0 ]; then
 
-if [ $HOUR -ge $LIMIT_HOUR ] || [ $HOUR -lt $STANDARD_HOUR ]; then
+if [ $HOUR -ge $HOUR_LIMIT ] || [ $HOUR -lt $HOUR_STANDARD ]; then
                 LIMIT_OFF=1
         else
                 LIMIT_OFF=0

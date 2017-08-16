@@ -39,16 +39,16 @@ fi
                         # Makes only sense if mesh-vpn is on
                         uci set simple-tc.mesh_vpn.enabled='1'
                         # Set uci ingress and egress to limited values and commit
-                        uci set simple-tc.mesh_vpn.limit_ingress='$INGRESS_LIMIT'                            # Set limited ingress
-                        uci set simple-tc.mesh_vpn.limit_egress='$EGRESS_LIMIT'                             # Set limited egress
+                        uci set simple-tc.mesh_vpn.limit_ingress=$INGRESS_LIMIT                            # Set limited ingress
+                        uci set simple-tc.mesh_vpn.limit_egress=$EGRESS_LIMIT                             # Set limited egress
                         uci commit simple-tc                                                         # commit values
                 
         else                                                  
                         # Makes only sense if mesh-vpn is on
                         uci set simple-tc.mesh_vpn.enabled='1'
                         # Set uci ingress and egress to default values and commit
-                        uci set simple-tc.mesh_vpn.limit_ingress='$INGRESS_DEFAULT'                             # Set standard ingress
-                        uci set simple-tc.mesh_vpn.limit_egress='$EGRESS_DEFAULT'                             # Set standard egress
+                        uci set simple-tc.mesh_vpn.limit_ingress=$INGRESS_DEFAULT                             # Set standard ingress
+                        uci set simple-tc.mesh_vpn.limit_egress=$EGRESS_DEFAULT                             # Set standard egress
                         uci commit simple-tc                                                           # commit values    
     fi
   

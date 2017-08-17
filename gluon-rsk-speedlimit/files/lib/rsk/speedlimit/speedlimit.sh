@@ -15,6 +15,9 @@ HOUR_STANDARD=`uci get rsk.@speedlimit[0].hour_normal`
 #
 # mesh vpn bandwith ratings
 #
+# current
+INGRESS_NOW=simple-tc.mesh_vpn.limit_ingress
+EGRESS_NOW=simple-tc.mesh_vpn.limit_egress
 # default
 INGRESS_DEFAULT=`uci get rsk.@speedlimit[0].default_ingress`
 EGRESS_DEFAULT=`uci get rsk.@speedlimit[0].default_egress`
@@ -42,7 +45,10 @@ fi
                         uci set simple-tc.mesh_vpn.limit_ingress=$INGRESS_LIMIT                            # Set limited ingress
                         uci set simple-tc.mesh_vpn.limit_egress=$EGRESS_LIMIT                             # Set limited egress
                         uci commit simple-tc                                                         # commit values
-                
+                        
+                        if [ $INGRESS_NOW -eq $INGRESS_LIMIT ];then
+                          /etc/init.d/tunneldigger restart
+                        fi
         else                                                  
                         # Makes only sense if mesh-vpn is on
                         uci set simple-tc.mesh_vpn.enabled='1'
@@ -50,7 +56,11 @@ fi
                         uci set simple-tc.mesh_vpn.limit_ingress=$INGRESS_DEFAULT                             # Set standard ingress
                         uci set simple-tc.mesh_vpn.limit_egress=$EGRESS_DEFAULT                             # Set standard egress
                         uci commit simple-tc                                                           # commit values    
-    fi
+
+                        if [ $INGRESS_NOW -eq $INGRESS_DEFAULT ];then
+                          /etc/init.d/tunneldigger restart
+                        fi
+fi
   
 else
     # is DISABLED

@@ -28,4 +28,4 @@ define Package/gluon-rsk-speedlimit/install
         $(CP) ./files/* $(1)/
 endef
 
-$(eval $(call BuildPackage,gluon-check-mesh))
+$(eval $(call BuildPackage,gluon-rsk-speedlimit))

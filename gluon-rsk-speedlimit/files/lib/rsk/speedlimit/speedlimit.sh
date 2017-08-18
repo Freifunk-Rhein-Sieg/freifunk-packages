@@ -46,7 +46,9 @@ fi
                         uci set simple-tc.mesh_vpn.limit_egress=$EGRESS_LIMIT                             # Set limited egress
                         uci commit simple-tc                                                         # commit values
                         
-                        if [ $INGRESS_NOW -eq $INGRESS_LIMIT ];then
+                        # only restart tunneldigger if we have different values
+                        if [ $INGRESS_NOW -ne $INGRESS_LIMIT ];then
+                          echo "before: $INGRESS_NOW after: $INGRESS_LIMIT"
                           /etc/init.d/tunneldigger restart
                         fi
         else                                                  
@@ -56,8 +58,9 @@ fi
                         uci set simple-tc.mesh_vpn.limit_ingress=$INGRESS_DEFAULT                             # Set standard ingress
                         uci set simple-tc.mesh_vpn.limit_egress=$EGRESS_DEFAULT                             # Set standard egress
                         uci commit simple-tc                                                           # commit values    
-
-                        if [ $INGRESS_NOW -eq $INGRESS_DEFAULT ];then
+                        # only restart tunneldigger if we have different values
+                        if [ $INGRESS_NOW -ne $INGRESS_DEFAULT ];then
+                          echo "before: $INGRESS_NOW after: $INGRESS_DEFAULT"
                           /etc/init.d/tunneldigger restart
                         fi
 fi

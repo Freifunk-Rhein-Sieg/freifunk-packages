@@ -48,7 +48,7 @@ fi
                         
                         # only restart tunneldigger if we have different values
                         if [ $INGRESS_NOW -ne $INGRESS_LIMIT ];then
-                          # echo "before: $INGRESS_NOW after: $INGRESS_LIMIT"
+                          echo "before: $INGRESS_NOW after: $INGRESS_LIMIT"
                           /etc/init.d/tunneldigger restart
                         fi
         else                                                  
@@ -60,7 +60,7 @@ fi
                         uci commit simple-tc                                                           # commit values    
                         # only restart tunneldigger if we have different values
                         if [ $INGRESS_NOW -ne $INGRESS_DEFAULT ];then
-                          # echo "before: $INGRESS_NOW after: $INGRESS_DEFAULT"
+                          echo "before: $INGRESS_NOW after: $INGRESS_DEFAULT"
                           /etc/init.d/tunneldigger restart
                         fi
 fi

@@ -16,8 +16,8 @@ HOUR_STANDARD=`uci get rsk.@speedlimit[0].hour_normal`
 # mesh vpn bandwith ratings
 #
 # current
-INGRESS_NOW=simple-tc.mesh_vpn.limit_ingress
-EGRESS_NOW=simple-tc.mesh_vpn.limit_egress
+INGRESS_NOW=`uci get simple-tc.mesh_vpn.limit_ingress`
+EGRESS_NOW=`uci get simple-tc.mesh_vpn.limit_egress`
 # default
 INGRESS_DEFAULT=`uci get rsk.@speedlimit[0].default_ingress`
 EGRESS_DEFAULT=`uci get rsk.@speedlimit[0].default_egress`

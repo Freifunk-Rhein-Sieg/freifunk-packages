@@ -12,9 +12,17 @@
 # get uci values to block wifi meshing with them
 #
 MAC_LIST=`uci get rsk.@blockmesh[0].maclist`
+DISABLED=`uci get rsk.@blockmesh[0].disabled`
+#
 #
 #
 
-# command:  iw dev $MESH_IFACE station set $HW_ADDR plink_action [open|block]
-# see: https://forum.freifunk.net/t/unnoetige-mesh-verbindungen-mit-mac-filter-verhindern/13244/10
-#
+
+if [ $DISABLED -eq 0 ]; then
+
+    # command:  iw dev $MESH_IFACE station set $HW_ADDR plink_action [open|block]
+    # see: https://forum.freifunk.net/t/unnoetige-mesh-verbindungen-mit-mac-filter-verhindern/13244/10
+    #
+
+
+fi

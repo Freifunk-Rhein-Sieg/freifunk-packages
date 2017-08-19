@@ -23,6 +23,9 @@ if [ $DISABLED -eq 0 ]; then
     # command:  iw dev $MESH_IFACE station set $HW_ADDR plink_action [open|block]
     # see: https://forum.freifunk.net/t/unnoetige-mesh-verbindungen-mit-mac-filter-verhindern/13244/10
     #
-
+    # 11s interface: mesh0
+    # loop for every entry in maclist
+        iw dev mesh0 set $MAC plink_action block
+    # end loop
 
 fi

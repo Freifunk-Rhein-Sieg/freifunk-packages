@@ -26,3 +26,8 @@ config speedlimit
         option default_egress '500'
         option hour_limit '22'
         option hour_normal '6'
+
+config blockmesh
+        option disabled '1'
+        option maclist ''
+        

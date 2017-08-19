@@ -24,8 +24,12 @@ if [ $DISABLED -eq 0 ]; then
     # see: https://forum.freifunk.net/t/unnoetige-mesh-verbindungen-mit-mac-filter-verhindern/13244/10
     #
     # 11s interface: mesh0
-    # loop for every entry in maclist
-        iw dev mesh0 set $MAC plink_action block
-    # end loop
-
+       # if $MAC_LIST not empty
+       if [ $MAC_LIST -ne '' ] then
+            # loop for every entry in maclist
+            for $MAC in $MAC_LIST do
+                iw dev mesh0 set $MAC plink_action block
+            done
+            # end loop
+        fi
 fi

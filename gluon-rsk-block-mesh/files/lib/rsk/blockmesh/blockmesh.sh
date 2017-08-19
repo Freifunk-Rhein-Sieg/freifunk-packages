@@ -25,7 +25,7 @@ if [ $DISABLED -eq 0 ]; then
     #
     # 11s interface: mesh0
        # if $MAC_LIST not empty
-       if [ $MAC_LIST -ne '' ] then
+       if [ $MAC_LIST -ne '' ]; then
             # loop for every entry in maclist
             for $MAC in $MAC_LIST do
                 iw dev mesh0 set $MAC plink_action block

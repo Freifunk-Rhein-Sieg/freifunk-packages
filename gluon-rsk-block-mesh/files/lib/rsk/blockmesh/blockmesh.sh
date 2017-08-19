@@ -13,3 +13,8 @@
 #
 MAC_LIST=`uci get rsk.@blockmesh[0].maclist`
 #
+#
+
+# command:  iw dev $MESH_IFACE station set $HW_ADDR plink_action [open|block]
+# see: https://forum.freifunk.net/t/unnoetige-mesh-verbindungen-mit-mac-filter-verhindern/13244/10
+#

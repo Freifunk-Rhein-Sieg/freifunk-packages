@@ -46,10 +46,18 @@ if [ $DISABLED -eq 0 ]; then
                         # echo "blocking $MAC"
                         # iw dev mesh0 set $MAC plink_action block
                         # fallback to iptables - iw does not work - to be checked later
-                        # ipv4
-                        iptables  -I INPUT 1 -m mac --mac-source $MAC -j DROP
-                        # ipv6
-                        ip6tables -I INPUT 1 -m mac --mac-source $MAC -j DROP
+                        
+                        # check first if entries do not already exist in chain
+                        # iptables -L INPUT | grep $MAC
+                        MACCHECK=$(iptables -L INPUT | grep $MAC)
+                        if [ $MACCHECK -ne '' ]; then
+                           # ipv4
+                           iptables  -I INPUT 1 -m mac --mac-source $MAC -j DROP
+                           # ipv6
+                           ip6tables -I INPUT 1 -m mac --mac-source $MAC -j DROP
+                        else
+                           echo "already blocked $MAC"
+                        fi
                 done
             # end loop
 

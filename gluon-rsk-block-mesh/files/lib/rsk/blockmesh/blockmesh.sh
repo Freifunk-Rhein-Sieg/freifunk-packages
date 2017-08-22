@@ -60,5 +60,7 @@ if [ $DISABLED -eq 0 ]; then
                  done
 
             # end loop
+else
+        echo "blockmesh uci setting shows DISABLED=true"
 
 fi

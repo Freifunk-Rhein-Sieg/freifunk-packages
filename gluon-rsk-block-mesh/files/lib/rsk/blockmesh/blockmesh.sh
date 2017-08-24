@@ -46,18 +46,18 @@ if [ $DISABLED -eq 0 ]; then
                         #iw dev mesh0 station set $MAC plink_action block
                         # fallback to iptables - iw does not work - to be checked later
                         # convert $MAC to upper strings to match iptables output
-                        CHECK=$(echo $MAC|tr "[a-z]" "[A-Z")
+                        # CHECK=$(echo $MAC|tr "[a-z]" "[A-Z") # only iptables needs upper-case MAC
                         #
                         
                         #
                         # check, ob mesh link zum sperren vorhanden
-                        # iw dev mesh0 station get 0a:44:33:85:4a:d9 | grep Station | wc -l ->1
-                        MAC_LINK=`iw dev mesh0 station get 0a:44:33:85:4a:d9 | grep Station | wc -l`
+                        # iw dev mesh0 station get  | grep Station | wc -l ->1
+                        MAC_LINK=`iw dev mesh0 station get $MAC | grep Station | wc -l`
                         if [ $MAC_LINK -eq 1 ]; then
                             #
                             # check, ob station bereits gesperrt ist
-                            # iw dev mesh0 station get 0a:44:33:85:4a:d9 | grep BLOCKED | wc -l ->1
-                            MAC_BLOCKED=`iw dev mesh0 station get 0a:44:33:85:4a:d9 | grep BLOCKED | wc -l`
+                            # iw dev mesh0 station get $MAC | grep BLOCKED | wc -l ->1
+                            MAC_BLOCKED=`iw dev mesh0 station get $MAC | grep BLOCKED | wc -l`
                             if [ $MAC_BLOCKED -eq 0 ]; then
                                 # wenn noch nicht gesperrt, dann
                                 #

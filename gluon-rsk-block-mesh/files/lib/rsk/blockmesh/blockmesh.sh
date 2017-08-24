@@ -48,24 +48,24 @@ if [ $DISABLED -eq 0 ]; then
                         # convert $MAC to upper strings to match iptables output
                         CHECK=$(echo $MAC|tr "[a-z]" "[A-Z")
                         #
-                        # iw version
-                        #
-                        
-                        iw dev mesh0 station set $MAC plink_action block
                         
                         #
-                        # iptables works, but has no effect on mesh
-                        #
-                        # MACCHECK=`iptables -L INPUT | grep $CHECK | wc -l`
-                        # if [ $MACCHECK -eq '0' ]; then
-                        #     echo "blocking $MAC"
-                        #     # ipv4
-                        #     iptables  -I INPUT 1 -m mac --mac-source $MAC -j DROP
-                        #     # ipv6
-                        #     ip6tables -I INPUT 1 -m mac --mac-source $MAC -j DROP
-                        #   else
-                        #     echo "already blocked $MAC"
-                        # fi
+                        # check, ob mesh link zum sperren vorhanden
+                        # iw dev mesh0 station get 0a:44:33:85:4a:d9 | grep Station | wc -l ->1
+                        MAC_LINK=`iw dev mesh0 station get 0a:44:33:85:4a:d9 | grep Station | wc -l`
+                        if [ $MAC_LINK -eq 1 ]; then
+                            #
+                            # check, ob station bereits gesperrt ist
+                            # iw dev mesh0 station get 0a:44:33:85:4a:d9 | grep BLOCKED | wc -l ->1
+                            MAC_BLOCKED=`iw dev mesh0 station get 0a:44:33:85:4a:d9 | grep BLOCKED | wc -l`
+                            if [ $MAC_BLOCKED -eq 0 ]; then
+                                # wenn noch nicht gesperrt, dann
+                                #
+                                iw dev mesh0 station set $MAC plink_action block
+                            fi
+                        else
+                            echo "$MAC already blocked."
+                        fi
                  done
 
             # end loop

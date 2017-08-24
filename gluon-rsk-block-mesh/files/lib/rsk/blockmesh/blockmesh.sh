@@ -62,9 +62,11 @@ if [ $DISABLED -eq 0 ]; then
                                 # wenn noch nicht gesperrt, dann
                                 #
                                 iw dev mesh0 station set $MAC plink_action block
+                            else
+                                echo "$MAC is already blocked."
                             fi
                         else
-                            echo "$MAC already blocked."
+                            echo "$MAC has no active link."
                         fi
                  done
 

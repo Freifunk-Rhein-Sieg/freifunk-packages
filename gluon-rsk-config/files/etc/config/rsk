@@ -24,8 +24,8 @@ config speedlimit
         option limit_egress '85'
         option default_ingress '7000'
         option default_egress '500'
-        option hour_limit '22'
-        option hour_normal '6'
+        option hour_limit '7'
+        option hour_normal '20'
 
 config blockmesh
         option disabled '1'

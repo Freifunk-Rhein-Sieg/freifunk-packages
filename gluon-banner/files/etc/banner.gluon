@@ -21,7 +21,8 @@
         ip a s                            // alle IPs anzeigen
         ip r s t all                      // gesamte Routingtabelle
         brctl show                        // alle bridges anzeigen
-		autoupdater -f                    // Firmware-Update erzwingen
+	autoupdater -f                    // Firmware-Update erzwingen
+	udhcpc -i br-client -q -S -n      // IPv4 Adresse für den Router setzen
 
 
 

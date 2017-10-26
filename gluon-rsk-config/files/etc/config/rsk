@@ -1,0 +1,35 @@
+config nightswitch
+        option houroff '22'
+        option houron '6'
+        option disabled '1'
+
+config checkmesh
+        option disabled '1'
+        option minclients '1'
+        option maxfail '5'
+
+config checkgw
+        option disabled '1'
+        option mac3gw 'b0:49:5e'
+        option maxfail '5'
+
+config ssidchanger
+        option disabled '0'
+        option limitlow '45'
+        option limithigh '55'
+
+config speedlimit
+        option disabled '1'
+        option limit_ingress '1850'
+        option limit_egress '85'
+        option default_ingress '7000'
+        option default_egress '500'
+        option hour_limit '7'
+        option hour_normal '20'
+
+config blockmesh
+        option disabled '1'
+        option maclist '0a:0a:0a:0a:0a:0a 0b:0b:0b:0b:0b:0b 0c:0c:0c:0c:0c:0c'
+        
+config robinson
+        option disabled '1'

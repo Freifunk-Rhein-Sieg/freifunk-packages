@@ -9,12 +9,12 @@ DISABLED=`uci get rsk.@robinson[0].disabled`
 
 
 # check if enabled
-if [ $DISABLED eq 0 ]; then
+if [ $DISABLED -eq 0 ]; then
 
   # check for connected clients
    CLIENTS=`batctl tl |grep W |wc -l`
    # if we have clients, no need to restart
-   if [ $CLIENTS eq 0 ]; then
+   if [ $CLIENTS -eq 0 ]; then
     
     # check for uptime 
     UPTIME=`awk '{print int($1/86400)}' /proc/uptime`

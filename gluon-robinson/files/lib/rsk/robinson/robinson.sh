@@ -19,7 +19,7 @@ if [ $DISABLED -eq 0 ]; then
     # check for uptime 
     UPTIME=`awk '{print int($1/86400)}' /proc/uptime`
       # if uptime is > 5 days
-      if [ $UPTIME > 5 ]; then
+      if [ $UPTIME -gt 5 ]; then
       
         reboot
       

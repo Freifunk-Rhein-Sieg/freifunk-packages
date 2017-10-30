@@ -33,3 +33,4 @@ config blockmesh
         
 config robinson
         option disabled '1'
+        option friday '5'

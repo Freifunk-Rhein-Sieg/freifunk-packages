@@ -6,7 +6,7 @@
 
 
 DISABLED=`uci get rsk.@robinson[0].disabled`
-
+FRIDAY=`uci get rsk.@robinson[0].friday`
 
 # check if enabled
 if [ $DISABLED -eq 0 ]; then
@@ -18,8 +18,8 @@ if [ $DISABLED -eq 0 ]; then
     
     # check for uptime 
     UPTIME=`awk '{print int($1/86400)}' /proc/uptime`
-      # if uptime is > 5 days
-      if [ $UPTIME -gt 5 ]; then
+      # if uptime is > friday days
+      if [ $UPTIME -gt $FRIDAY ]; then
       
         reboot
       

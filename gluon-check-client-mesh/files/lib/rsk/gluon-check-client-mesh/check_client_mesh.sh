@@ -26,7 +26,8 @@ MINCLIENTS=`uci get rsk.@checkmesh[0].minclients`
 
   # check mesh connections with gateway and reboot if not present:
 
-  count=`batctl o | grep mesh0 | wc -l`
+   #count=`batctl o | grep mesh0 | wc -l` # alt
+   count=`iw mesh0 station dump | grep ESTAB | wc -l`
 
     if [ -f $FAILCOUNTFILE ]; then
         read failcount < $FAILCOUNTFILE

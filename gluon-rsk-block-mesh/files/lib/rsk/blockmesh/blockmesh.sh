@@ -72,6 +72,43 @@ if [ $DISABLED -eq 0 ]; then
                  done
 
             # end loop
+
+    # 11s interface: mesh1
+           LIST=$(echo $MAC_LIST | tr "\s" "\n")
+            # loop for every entry in maclist
+              # echo $LIST
+                for MAC in $LIST
+                  do
+                        #iw dev mesh1 station set $MAC plink_action block
+                        # fallback to iptables - iw does not work - to be checked later
+                        # convert $MAC to upper strings to match iptables output
+                        # CHECK=$(echo $MAC|tr "[a-z]" "[A-Z") # only iptables needs upper-case MAC
+                        #
+                        
+                        #
+                        # check, ob mesh link zum sperren vorhanden
+                        # iw dev mesh1 station get  | grep Station | wc -l ->1
+                        MAC_LINK=`iw dev mesh1 station get $MAC | grep Station | wc -l`
+                        if [ $MAC_LINK -eq 1 ]; then
+                            #
+                            # check, ob station bereits gesperrt ist
+                            # iw dev mesh1 station get $MAC | grep BLOCKED | wc -l ->1
+                            MAC_BLOCKED=`iw dev mesh1 station get $MAC | grep BLOCKED | wc -l`
+                            if [ $MAC_BLOCKED -eq 0 ]; then
+                                # wenn noch nicht gesperrt, dann
+                                #
+                                echo "blocking $MAC"
+                                iw dev mesh1 station set $MAC plink_action block
+                            else
+                                echo "$MAC is already blocked."
+                            fi
+                        else
+                            echo "$MAC has no active link."
+                        fi
+                 done
+
+            # end loop
+
 else
         echo "blockmesh uci setting shows DISABLED=true"
 

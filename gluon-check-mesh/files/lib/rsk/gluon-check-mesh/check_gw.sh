@@ -51,6 +51,7 @@ MAC3GW=`uci get rsk.@checkgw[0].mac3gw`
         # echo "Bisher $failcount Fehler\n"
         # enable wifi in case someone pressed false button
         uci set wireless.client_radio0.disabled='0'
+        uci set wireless.mesh_radio0.disabled='0'
         uci commit wireless
         wifi
         # end in case false button

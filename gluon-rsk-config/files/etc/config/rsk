@@ -34,6 +34,7 @@ config blockmesh
 config pingcheck
         option disabled '1'
         option iplist '2a03:2260:3017:300:a62b:b0ff:feca:86da 2a03:2260:3017:300:219:99ff:fe9b:6917'
+        option maxfail '5'
 
 config robinson
         option disabled '1'

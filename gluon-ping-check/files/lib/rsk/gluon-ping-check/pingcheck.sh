@@ -19,6 +19,9 @@ MAXFAILCOUNT=`uci get rsk.@pingcheck[0].maxfail`
 #
 #
 #
+# debug
+logger -s 'Starting gluon-ping-check'
+
 if [ $DISABLED -eq 0 ]; then
  if [ -f $FAILCOUNTFILE ]; then
       read failcount < $FAILCOUNTFILE
@@ -51,6 +54,7 @@ if [ $DISABLED -eq 0 ]; then
                     else
                         # debug
                         echo 'ping war fehlerhaft auf '$IPADDR
+                        logger -s 'ping war fehlerhaft auf '$IPADDR
                    fi
                  done
                    # debug
@@ -69,13 +73,14 @@ if [ $DISABLED -eq 0 ]; then
                           echo 0 > $FAILCOUNTFILE
                           # debug
                           echo "maximale Fehler erreicht - restart wifi ..."
+                          logger -s "maximale Fehler erreicht - restart wifi ..."
                           wifi
 
                         fi
                    else
                         # debug
                         echo 'ein ping war erfolgreich - meshing steht...'
-
+                        logger -s 'ein ping war erfolgreich - meshing steht...'
                    fi
     else
         # debug

@@ -35,19 +35,26 @@ if [ $DISABLED -eq 0 ]; then
                    if [ $PING_DROP -eq 0 ]; then
                         # everything is ok
                         else
-                        # we have drops - lets increase error count
+                        PING_ERROR=1
+                   fi
+                   
+
+
+                 done
+                       # if PING ERROR
+                   if [ $PING_ERROR eq 1 ]; then
+                   
+                       # we have drops - lets increase error count
                         failcount=$(($failcount+1))
                         if [ $failcount -ge $MAXFAILCOUNT ]; then
                           echo 0 > $FAILCOUNTFILE
                           # debug
                           # echo "maximale Fehler erreicht - restart wifi ..."
                           wifi
+                          
+                 fi
 
-                        fi
-                   fi
 
-
-                 done
 
     else
         echo 0 > $FAILCOUNTFILE

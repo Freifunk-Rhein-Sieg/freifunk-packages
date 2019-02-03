@@ -51,9 +51,14 @@ if [ $DISABLED -eq 0 ]; then
                    echo 'loop verlassen.'
                    # if ! PINGSUCCESS
                    if [ $PINGSUCCESS -eq 0 ]; then
+                       # debug
+                       echo 'wir haben nur ping-fails'
 
                        # we have drops - lets increase error count
                         failcount=$(($failcount+1))
+                        echo 'schreibe failcounter ins file'
+                        echo $failcount > $FAILCOUNTFILE
+
                         if [ $failcount -ge $MAXFAILCOUNT ]; then
                           echo 0 > $FAILCOUNTFILE
                           # debug

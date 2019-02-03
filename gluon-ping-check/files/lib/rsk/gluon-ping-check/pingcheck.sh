@@ -43,6 +43,8 @@ if [ $DISABLED -eq 0 ]; then
                         #debug
                         echo 'ping war O.K.  auf '$IPADDR
                         PINGSUCCESS=1
+                        echo 'setze Fehlercounter auf 0...'
+                        echo 0 > $FAILCOUNTFILE
                         echo 'breche check ab.'
                         break
 

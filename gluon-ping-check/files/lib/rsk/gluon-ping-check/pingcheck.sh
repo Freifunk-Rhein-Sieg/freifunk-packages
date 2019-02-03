@@ -29,8 +29,7 @@ if [ $DISABLED -eq 0 ]; then
                  do
                    PING_DROP = `ping -c 1 -6 -q $IP | grep received | cut -d ',' -f 3 | cut -d '%' -f 1 | cut -d ' ' -f 2`
                    if [ $PING_DROP -eq 0 ]; then
-                        # everything is ok
-                        else
+                        
                         PING_ERROR=1
                    fi
                  done

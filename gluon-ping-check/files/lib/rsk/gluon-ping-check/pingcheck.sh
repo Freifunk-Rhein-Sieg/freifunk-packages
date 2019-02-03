@@ -47,9 +47,10 @@ if [ $DISABLED -eq 0 ]; then
                         break
                    fi
                  done
-
+                   # debug
+                   echo 'loop verlassen.'
                    # if ! PINGSUCCESS
-                   if [ $PINGSUCCESS -eq 1 ]; then
+                   if [ $PINGSUCCESS -eq 0 ]; then
 
                        # we have drops - lets increase error count
                         failcount=$(($failcount+1))
@@ -60,6 +61,10 @@ if [ $DISABLED -eq 0 ]; then
                           wifi
 
                         fi
+                   else
+                        # debug
+                        echo 'ein ping war erfolgreich - meshing steht...'
+
                    fi
     else
         # debug

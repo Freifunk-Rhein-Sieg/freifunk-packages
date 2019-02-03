@@ -30,7 +30,7 @@ endef
 
 define Package/gluon-ping-check/install
 		$(INSTALL_DIR) $(1)/usr/lib/micron.d/
-		$(INSTALL_DATA) files/usr/lib/micron.d/gluon-ping-check $(1)/usr/lib/micron.d/gluon-ping-check
+		$(INSTALL_DATA) files/usr/lib/micron.d/pingcheck $(1)/usr/lib/micron.d/pingcheck
 		$(INSTALL_DIR) $(1)/lib/rsk/gluon-ping-check/
 		$(INSTALL_BIN) files/lib/rsk/gluon-ping-check/pingcheck.sh $(1)/lib/rsk/gluon-ping-check/
 endef

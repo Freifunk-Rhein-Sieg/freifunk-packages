@@ -9,7 +9,7 @@
 #ROLE=`uci get gluon-node-info.@system[0].role`
 #
 #
-# get uci values to block wifi meshing with them
+# get uci values to check meshing partners
 #
 IP_LIST=`uci get rsk.@pingcheck[0].iplist`
 DISABLED=`uci get rsk.@pingcheck[0].disabled`

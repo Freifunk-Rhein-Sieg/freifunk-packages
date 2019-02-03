@@ -36,7 +36,14 @@ if [ $DISABLED -eq 0 ]; then
                         # everything is ok
                         else
                         # we have drops - lets increase error count
-                        
+                        failcount=$(($failcount+1))
+                        if [ $failcount -ge $MAXFAILCOUNT ]; then
+                          echo 0 > $FAILCOUNTFILE
+                          # debug
+                          # echo "maximale Fehler erreicht - restart wifi ..."
+                          wifi
+
+                        fi
                    fi
 
 

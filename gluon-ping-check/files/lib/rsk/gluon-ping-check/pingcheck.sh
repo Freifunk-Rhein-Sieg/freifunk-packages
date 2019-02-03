@@ -14,7 +14,7 @@
 IP_LIST=`uci get rsk.@pingcheck[0].iplist`
 DISABLED=`uci get rsk.@pingcheck[0].disabled`
 FAILCOUNTFILE=/var/run/ping_failcount
-# wie viele Fehlversuche vor dem Reboot (min)
+# wie viele Fehlversuche vor dem wifi restart (min)
 MAXFAILCOUNT=`uci get rsk.@pingcheck[0].maxfail`
 #
 #

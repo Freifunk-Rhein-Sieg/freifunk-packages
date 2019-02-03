@@ -35,16 +35,20 @@ if [ $DISABLED -eq 0 ]; then
                    # debug
                    echo 'ping auf '$IPADDR
                    PING_DROP=`ping -c 1 -6 -q $IPADDR | grep received | cut -d ',' -f 3 | cut -d '%' -f 1 | cut -d ' ' -f 2`
+                   # debug
+                   echo 'ping drop in %: '$PING_DROP
+
                    if [ $PING_DROP -eq 0 ]; then
 
                         #debug
-                        echo 'ping war fehlerhaft auf '$IPADDR
-                    else
-                        # debug
-                        echo 'ping war O.K.  bei '$IPADDR
+                        echo 'ping war O.K.  auf '$IPADDR
                         PINGSUCCESS=1
                         echo 'breche check ab.'
                         break
+
+                    else
+                        # debug
+                        echo 'ping war fehlerhaft auf '$IPADDR
                    fi
                  done
                    # debug

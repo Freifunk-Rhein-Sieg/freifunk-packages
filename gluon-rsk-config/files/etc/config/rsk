@@ -30,7 +30,11 @@ config speedlimit
 config blockmesh
         option disabled '1'
         option maclist '0a:0a:0a:0a:0a:0a 0b:0b:0b:0b:0b:0b 0c:0c:0c:0c:0c:0c'
-        
+      
+config pingcheck
+        option disabled '1'
+        option iplist '2a03:2260:3017:300:a62b:b0ff:feca:86da 2a03:2260:3017:300:219:99ff:fe9b:6917'
+
 config robinson
         option disabled '1'
         option friday '5'

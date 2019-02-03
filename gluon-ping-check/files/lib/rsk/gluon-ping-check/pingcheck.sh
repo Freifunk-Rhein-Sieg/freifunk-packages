@@ -20,12 +20,8 @@ MAXFAILCOUNT=`uci get rsk.@pingcheck[0].maxfail`
 #
 #
 if [ $DISABLED -eq 0 ]; then
-
-
-   if [ -f $FAILCOUNTFILE ]; then
+ if [ -f $FAILCOUNTFILE ]; then
       read failcount < $FAILCOUNTFILE
-    
-
       LIST=$(echo $IP_LIST | tr "\s" "\n")
             # loop for every entry in iplist
               # echo $LIST
@@ -37,11 +33,9 @@ if [ $DISABLED -eq 0 ]; then
                         else
                         PING_ERROR=1
                    fi
-                   
-
-
                  done
-                       # if PING ERROR
+
+                   # if PING ERROR
                    if [ $PING_ERROR eq 1 ]; then
                    
                        # we have drops - lets increase error count
@@ -52,16 +46,14 @@ if [ $DISABLED -eq 0 ]; then
                           # echo "maximale Fehler erreicht - restart wifi ..."
                           wifi
                           
-                 fi
-
-
-
+                        fi
+                   fi
     else
         echo 0 > $FAILCOUNTFILE
         # debug
         # echo "Bisher keine Fehler\n"
 
-   fi
+    fi
 
 else
         echo "pingcheck uci setting shows DISABLED=true"

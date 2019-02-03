@@ -49,9 +49,10 @@ if [ $DISABLED -eq 0 ]; then
                         fi
                    fi
     else
-        echo 0 > $FAILCOUNTFILE
         # debug
-        # echo "Bisher keine Fehler\n"
+        # echo 'noch kein failcounter - erzeuge Datei'
+        echo 0 > $FAILCOUNTFILE
+       
 
     fi
 

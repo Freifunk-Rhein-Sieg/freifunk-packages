@@ -1,1 +1,1 @@
-*/15 * * * * sh /lib/rsk/gluon-ping-check/pingcheck.sh;
+*/5 * * * * sh /lib/rsk/gluon-ping-check/pingcheck.sh;

@@ -75,6 +75,7 @@ if [ $DISABLED -eq 0 ]; then
                           echo "maximale Fehler erreicht - restart wifi ..."
                           logger -s "maximale Fehler erreicht - restart wifi ..."
                           uci set wireless.default_radio0.disabled='0'
+                          uci commit wireless
                           wifi
 
                         fi

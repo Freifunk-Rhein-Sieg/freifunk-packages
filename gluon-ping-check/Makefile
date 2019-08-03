@@ -12,6 +12,7 @@ define Package/gluon-ping-check
   SECTION:=daemon
   CATEGORY:=Freifunk Rhein-Sieg
   TITLE:=Restart wifi or reboot node on wifi hang
+  DEPENDS:=+gluon-core +gluon-rsk-config
 endef
 
 define Package/gluon-ping-check/description

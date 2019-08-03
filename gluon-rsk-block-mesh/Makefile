@@ -11,7 +11,7 @@ define Package/gluon-rsk-block-mesh
   SECTION:=gluon
   CATEGORY:=Gluon
   TITLE:=Adjust mesh-vpn bandwith based on uci config
-  DEPENDS:=+gluon-core
+  DEPENDS:=+gluon-core +gluon-rsk-config +iw-full
 endef
 
 define Build/Prepare

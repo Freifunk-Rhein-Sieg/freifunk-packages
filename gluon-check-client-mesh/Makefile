@@ -11,7 +11,7 @@ define Package/gluon-check-client-mesh
   SECTION:=gluon
   CATEGORY:=Gluon
   TITLE:=Check Client Mesh based on uci rsk.checkmesh config
-  DEPENDS:=+gluon-core
+  DEPENDS:=+gluon-core +gluon-rsk-config +iw-full
 endef
 
 define Build/Prepare

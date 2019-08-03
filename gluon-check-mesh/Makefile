@@ -11,7 +11,7 @@ define Package/gluon-check-mesh
   SECTION:=gluon
   CATEGORY:=Gluon
   TITLE:=Check Wifi Mesh Gateway based on uci config
-  DEPENDS:=+gluon-core
+  DEPENDS:=+gluon-core +gluon-rsk-config +iw-full
 endef
 
 define Build/Prepare

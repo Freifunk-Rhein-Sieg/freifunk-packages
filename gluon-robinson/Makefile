@@ -12,6 +12,7 @@ define Package/rsk-robinson
   SECTION:=daemon
   CATEGORY:=Freifunk Rhein-Sieg
   TITLE:=Reboot Robinson Nodes after 5 days uptime
+  DEPENDS:=+gluon-core +gluon-rsk-config
 endef
 
 define Package/rsk-robinson/description

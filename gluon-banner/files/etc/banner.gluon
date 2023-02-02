@@ -13,11 +13,11 @@
  Befehle:
  
         logread -f                        // syslog Ausgabe auf Konsole
-        batctl cl                        // alle Claims announced for the mesh
-        batctl -m bat0 o                 // batman-adv nachbarn anzeigen
-        iw dev client0 station dump         // WLAN Nachbarn mit Details
+        batctl cl                         // alle Claims announced for the mesh
+        batctl -m bat0 o                  // batman-adv Nachbarn anzeigen
+        iw dev client0 station dump       // WLAN Nachbarn mit Details
         traceroute -n 10.61.104.2         // Traceroute via OLSR
-        batctl -m bat0 tr 10.61.71.1     // Traceroute via batman-adv
+        batctl -m bat0 tr 10.61.71.1      // Traceroute via batman-adv
         ip a s                            // alle IPs anzeigen
         ip r s t all                      // gesamte Routingtabelle
         brctl show                        // alle bridges anzeigen

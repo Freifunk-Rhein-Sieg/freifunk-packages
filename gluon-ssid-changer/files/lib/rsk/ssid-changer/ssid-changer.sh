@@ -3,6 +3,12 @@
 # Enabled?
 DISABLED=`uci get rsk.@ssidchanger[0].disabled`
 
+FAILCOUNTFILE=/var/run/ssidchanger_failcount
+# wie viele Fehlversuche vor dem Reboot (min)
+MAXFAILCOUNT=`uci get rsk.@ssidchanger[0].maxfail`
+#
+
+
 if [ $DISABLED -eq 0 ]; then
 
 # At first some Definitions:
@@ -37,9 +43,25 @@ then
         # dow we have a TQ value now?
         if [ ! $GATEWAY_TQ ];
         then
-                # ok - really no TQ available :(
-                GATEWAY_TQ=0 #Just an easy way to get an valid value if there is no gatway
-        fi
+                
+
+                if [ -f $FAILCOUNTFILE ]; then
+                      read failcount < $FAILCOUNTFILE
+                       # we have drops - lets increase error count
+                        failcount=$(($failcount+1))
+                        # echo 'schreibe failcounter ins file'
+                        echo $failcount > $FAILCOUNTFILE
+                        if [ $failcount -ge $MAXFAILCOUNT ]; then
+                          echo 0 > $FAILCOUNTFILE
+                          # ok - really no TQ available :(
+                          GATEWAY_TQ=0 #Just an easy way to get an valid value if there is no gatway
+                        fi
+                        
+                 else
+                    # debug
+                    # echo 'noch kein failcounter - erzeuge Datei'
+                    echo 0 > $FAILCOUNTFILE
+               fi
 fi
 
 if [ $GATEWAY_TQ -gt $UPPER_LIMIT ];

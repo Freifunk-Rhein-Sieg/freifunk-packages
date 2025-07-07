@@ -28,12 +28,12 @@ fi
 
 #Is there an active Gateway?
 # lets check old gluon default
-GATEWAY_TQ=`batctl gwl | grep "^=>" | awk -F'[()]' '{print $2}'| tr -d " "` #Grep the Connection Quality of the Gateway which is currently used
+GATEWAY_TQ=`batctl gwl -H | grep "^=>" | awk -F'[()]' '{print $2}'| tr -d " "` #Grep the Connection Quality of the Gateway which is currently used
 
 if [ ! $GATEWAY_TQ ]; #If there is no gateway there will be errors in the following if clauses
 then
         # lets try to get TQ from new lede based gluon
-        GATEWAY_TQ=`batctl gwl | grep "^*" | awk -F'[()]' '{print $2}'| tr -d " "` #Grep the Connection Quality of the Gateway which is current
+        GATEWAY_TQ=`batctl gwl -H | grep "^*" | awk -F'[()]' '{print $2}'| tr -d " "` #Grep the Connection Quality of the Gateway which is current
         # dow we have a TQ value now?
         if [ ! $GATEWAY_TQ ];
         then

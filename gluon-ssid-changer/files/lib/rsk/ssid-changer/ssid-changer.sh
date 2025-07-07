@@ -62,6 +62,7 @@ then
                     # echo 'noch kein failcounter - erzeuge Datei'
                     echo 0 > $FAILCOUNTFILE
                fi
+        fi
 fi
 
 if [ $GATEWAY_TQ -gt $UPPER_LIMIT ];

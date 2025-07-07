@@ -61,6 +61,9 @@ then
                           echo 0 > $FAILCOUNTFILE
                           # ok - really no TQ available :(
                           GATEWAY_TQ=0 #Just an easy way to get an valid value if there is no gatway
+                        else
+                                # we have no values and maxcounter not reached - lets finish job
+                                exit 0
                         fi
                         
                  else

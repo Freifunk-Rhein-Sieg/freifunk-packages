@@ -65,6 +65,8 @@ then
                     # echo 'noch kein failcounter - erzeuge Datei'
                     echo 0 > $FAILCOUNTFILE
                fi
+        else
+                echo 0 > $FAILCOUNTFILE
         fi
 else
                 echo 0 > $FAILCOUNTFILE

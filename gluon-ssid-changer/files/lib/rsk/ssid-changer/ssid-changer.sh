@@ -65,7 +65,7 @@ then
                         
                  else
                     # debug
-                    # echo 'noch kein failcounter - erzeuge Datei'
+                    # echo "noch kein failcounter - erzeuge Datei"
                     echo 0 > $FAILCOUNTFILE
                fi
         else

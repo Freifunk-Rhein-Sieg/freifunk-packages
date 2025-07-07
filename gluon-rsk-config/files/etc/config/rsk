@@ -17,6 +17,7 @@ config ssidchanger
         option disabled '0'
         option limitlow '45'
         option limithigh '55'
+        option maxfail '5'
 
 config speedlimit
         option disabled '1'

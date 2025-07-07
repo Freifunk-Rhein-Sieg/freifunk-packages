@@ -66,6 +66,8 @@ then
                     echo 0 > $FAILCOUNTFILE
                fi
         fi
+else
+                echo 0 > $FAILCOUNTFILE
 fi
 
 if [ $GATEWAY_TQ -gt $UPPER_LIMIT ];

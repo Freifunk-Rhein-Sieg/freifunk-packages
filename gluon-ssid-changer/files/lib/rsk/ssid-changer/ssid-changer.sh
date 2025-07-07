@@ -55,7 +55,7 @@ then
                       read failcount < $FAILCOUNTFILE
                        # we have drops - lets increase error count
                         failcount=$(($failcount+1))
-                        echo 'schreibe $failcount failcounter ins file'
+                        echo "schreibe $failcount failcounter ins file"
                         echo $failcount > $FAILCOUNTFILE
                         if [ $failcount -ge $MAXFAILCOUNT ]; then
                           echo 0 > $FAILCOUNTFILE

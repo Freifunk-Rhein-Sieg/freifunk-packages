@@ -5,7 +5,10 @@ DISABLED=`uci get rsk.@ssidchanger[0].disabled`
 
 FAILCOUNTFILE=/var/run/ssidchanger_failcount
 # wie viele Fehlversuche vor dem Reboot (min)
-MAXFAILCOUNT=`uci get rsk.@ssidchanger[0].maxfail`
+
+#MAXFAILCOUNT=`uci get rsk.@ssidchanger[0].maxfail` # nicht kompatibel, solange rsk-config den Wert nicht gesetzt hat
+# lets do it the static way
+MAXFAILCOUNT = 5
 #
 
 

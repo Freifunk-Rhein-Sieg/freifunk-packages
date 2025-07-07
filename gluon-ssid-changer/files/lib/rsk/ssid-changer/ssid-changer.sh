@@ -8,8 +8,11 @@ FAILCOUNTFILE=/var/run/ssidchanger_failcount
 
 #MAXFAILCOUNT=`uci get rsk.@ssidchanger[0].maxfail` # nicht kompatibel, solange rsk-config den Wert nicht gesetzt hat
 # lets do it the static way
-MAXFAILCOUNT = 5
+MAXFAILCOUNT=5
 #
+
+# debug
+#echo "max $MAXFAILCOUNT Fehler"
 
 
 if [ $DISABLED -eq 0 ]; then

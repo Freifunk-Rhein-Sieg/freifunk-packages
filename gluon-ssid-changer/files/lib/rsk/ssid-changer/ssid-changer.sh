@@ -108,7 +108,7 @@ then
                 CURRENT_SSID=`grep "^ssid=$OFFLINE_SSID" $HOSTAPD | cut -d"=" -f2`
                 if [ $CURRENT_SSID == $OFFLINE_SSID ]
                 then
-                        echo "SSID $CURRENT_SSID is correct, noting to do"
+                        echo "SSID $CURRENT_SSID is correct, nothing to do"
                         HUP_NEEDED=0
                         break
                 fi
